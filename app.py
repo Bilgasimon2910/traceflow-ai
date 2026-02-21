@@ -61,3 +61,11 @@ def generate_tests(req: TestGenRequest):
     )
 
     return {"result": response.choices[0].message.content}
+
+@app.get("/")
+def health_check():
+    return {
+        "service": "TraceFlow AI",
+        "status": "running"
+    }
+
