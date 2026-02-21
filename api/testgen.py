@@ -20,3 +20,4 @@ def generate_tests(requirement: str) -> str:
     )
 
     return response.choices[0].message.content
+
