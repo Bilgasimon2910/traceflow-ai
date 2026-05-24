@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Large Print Word Search for Seniors | TraceFlow</title>
+<meta name="description" content="10 relaxing garden & nature word search puzzles. Extra-large letters, perfect for seniors. Download PDF or order paperback.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & base ──────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green-deep:#2D5016;
+  --green-mid:#5A8A3C;
+  --green-light:#EDF5E5;
+  --green-pale:#F5FAF0;
+  --gold:#D4A853;
+  --gold-light:#F5E6C0;
+  --cream:#FFF8EE;
+  --text-dark:#1A2A10;
+  --text-mid:#4A6030;
+  --text-light:#7A9060;
+  --white:#FFFFFF;
+  --radius:12px;
+  --shadow:0 4px 32px rgba(45,80,22,0.10);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;color:var(--text-dark);background:var(--white);overflow-x:hidden}
+
+/* ── Nav ───────────────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:64px;
+  background:rgba(255,255,255,0.96);
+  border-bottom:1px solid rgba(90,138,60,0.15);
+  backdrop-filter:blur(8px);
+}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green-deep);text-decoration:none;letter-spacing:0.02em}
+.nav-logo span{color:var(--gold)}
+.nav-cta{
+  background:var(--green-deep);color:var(--white);
+  padding:9px 22px;border-radius:50px;font-size:.875rem;font-weight:700;
+  text-decoration:none;letter-spacing:0.04em;transition:background .2s,transform .15s;
+}
+.nav-cta:hover{background:var(--green-mid);transform:translateY(-1px)}
+
+/* ── Hero ──────────────────────────────────────────────────── */
+.hero{
+  min-height:100vh;padding:64px 5% 0;
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;
+  background:var(--green-pale);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;right:-120px;top:-120px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,168,83,0.18) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;left:-80px;bottom:-80px;
+  width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(90,138,60,0.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-text{position:relative;z-index:1;animation:fadeUp .8s ease both}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold-light);color:var(--green-deep);
+  font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:5px 14px;border-radius:50px;margin-bottom:20px;
+}
+.hero-eyebrow::before{content:'✦';color:var(--gold)}
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,4vw,3.4rem);
+  line-height:1.15;color:var(--green-deep);
+  margin-bottom:18px;
+}
+h1 em{font-style:italic;color:var(--green-mid)}
+.hero-sub{
+  font-size:1.1rem;line-height:1.7;color:var(--text-mid);
+  max-width:480px;margin-bottom:32px;font-weight:300;
+}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--white);border:1px solid rgba(90,138,60,0.25);
+  color:var(--text-mid);font-size:.8rem;font-weight:700;
+  padding:6px 14px;border-radius:50px;
+}
+.badge::before{content:'✓';color:var(--green-mid);font-weight:900}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:14px}
+.btn-primary{
+  background:var(--green-deep);color:var(--white);
+  padding:16px 32px;border-radius:50px;font-size:1rem;font-weight:700;
+  text-decoration:none;letter-spacing:0.03em;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 4px 20px rgba(45,80,22,0.3);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(45,80,22,0.35)}
+.btn-secondary{
+  background:transparent;color:var(--green-deep);
+  padding:16px 32px;border-radius:50px;font-size:1rem;font-weight:700;
+  text-decoration:none;border:2px solid var(--green-deep);
+  transition:all .2s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-secondary:hover{background:var(--green-deep);color:var(--white)}
+.price-note{font-size:.8rem;color:var(--text-light);margin-top:10px}
+.price-note strong{color:var(--green-deep)}
+
+/* ── Book mockup ───────────────────────────────────────────── */
+.hero-visual{
+  display:flex;justify-content:center;align-items:center;
+  position:relative;z-index:1;animation:fadeUp .8s .15s ease both;
+}
+.book-mockup{
+  width:280px;height:380px;border-radius:4px 12px 12px 4px;
+  background:var(--green-deep);
+  box-shadow:
+    -8px 0 0 #1a3a08,
+    -10px 4px 20px rgba(0,0,0,0.35),
+    4px 8px 40px rgba(45,80,22,0.25);
+  position:relative;overflow:hidden;cursor:pointer;
+  transition:transform .3s;
+}
+.book-mockup:hover{transform:rotate(-2deg) scale(1.03)}
+.book-border{
+  position:absolute;inset:12px;
+  border:1.5px solid var(--gold);border-radius:2px 8px 8px 2px;
+  pointer-events:none;
+}
+.book-border::after{
+  content:'';position:absolute;inset:5px;
+  border:0.5px solid rgba(212,168,83,0.4);border-radius:1px 6px 6px 1px;
+}
+.book-tag{
+  position:absolute;top:28px;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:var(--green-deep);
+  font-size:.6rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;
+  padding:4px 14px;white-space:nowrap;
+}
+.book-title-block{
+  position:absolute;top:60px;left:0;right:0;text-align:center;padding:0 20px;
+}
+.book-title-block h2{
+  font-family:'Playfair Display',serif;color:var(--cream);
+  font-size:1.6rem;line-height:1.2;margin-bottom:4px;
+}
+.book-title-block p{color:rgba(255,248,238,.7);font-size:.75rem;letter-spacing:.05em}
+.book-divider{
+  position:absolute;top:175px;left:20px;right:20px;
+  height:1px;background:var(--gold);opacity:.6;
+}
+.book-circle{
+  position:absolute;top:195px;left:50%;transform:translateX(-50%);
+  width:90px;height:90px;border-radius:50%;
+  border:1px solid rgba(212,168,83,.5);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.book-circle .num{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.8rem;line-height:1}
+.book-circle .lbl{color:rgba(255,248,238,.6);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase}
+.book-features{
+  position:absolute;bottom:20px;left:0;right:0;
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+}
+.book-feat{color:rgba(255,248,238,.75);font-size:.6rem;letter-spacing:.04em}
+.book-url{
+  position:absolute;bottom:8px;left:0;right:0;text-align:center;
+  color:var(--gold);font-size:.55rem;font-weight:700;letter-spacing:.08em;
+}
+.floating-badge{
+  position:absolute;top:-16px;right:-16px;
+  width:68px;height:68px;border-radius:50%;
+  background:var(--gold);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(212,168,83,.4);
+  animation:spin-slow 8s linear infinite;
+}
+.floating-badge span:first-child{font-size:.65rem;font-weight:900;color:var(--green-deep);text-align:center;line-height:1.1}
+.floating-badge span:last-child{font-size:.5rem;color:var(--green-deep);font-weight:700}
+
+/* ── Trust bar ─────────────────────────────────────────────── */
+.trust-bar{
+  background:var(--green-deep);color:var(--cream);
+  display:flex;justify-content:center;flex-wrap:wrap;gap:0;
+  padding:20px 5%;
+}
+.trust-item{
+  display:flex;align-items:center;gap:10px;padding:10px 28px;
+  border-right:1px solid rgba(255,248,238,.15);font-size:.875rem;
+}
+.trust-item:last-child{border-right:none}
+.trust-icon{font-size:1.3rem}
+
+/* ── Sections ──────────────────────────────────────────────── */
+section{padding:80px 5%}
+.section-label{
+  font-size:.75rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--green-mid);margin-bottom:12px;
+}
+h2.section-title{
+  font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);
+  color:var(--green-deep);line-height:1.2;margin-bottom:16px;
+}
+.section-sub{font-size:1rem;color:var(--text-mid);max-width:560px;line-height:1.7;font-weight:300}
+
+/* ── What's inside ─────────────────────────────────────────── */
+.inside-section{background:var(--white)}
+.puzzles-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:16px;margin-top:48px;
+}
+.puzzle-card{
+  background:var(--green-pale);border:1px solid rgba(90,138,60,.2);
+  border-radius:var(--radius);padding:22px 20px;
+  transition:transform .2s,box-shadow .2s;cursor:default;
+}
+.puzzle-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.puzzle-num{
+  font-family:'Playfair Display',serif;font-size:2rem;
+  color:rgba(90,138,60,.25);line-height:1;margin-bottom:8px;
+}
+.puzzle-card h3{font-size:.95rem;font-weight:700;color:var(--green-deep);margin-bottom:4px}
+.puzzle-card p{font-size:.8rem;color:var(--text-light);line-height:1.5}
+
+/* ── Features ──────────────────────────────────────────────── */
+.features-section{background:var(--green-pale)}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;margin-top:48px}
+.feature-card{
+  background:var(--white);border-radius:var(--radius);padding:28px 24px;
+  border:1px solid rgba(90,138,60,.12);
+}
+.feature-icon{font-size:2rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--green-deep);margin-bottom:8px}
+.feature-card p{font-size:.875rem;color:var(--text-mid);line-height:1.6;font-weight:300}
+
+/* ── Sample puzzle preview ─────────────────────────────────── */
+.preview-section{background:var(--white)}
+.preview-inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  align-items:start;margin-top:48px;
+}
+.grid-demo{
+  background:var(--green-pale);border:1px solid rgba(90,138,60,.2);
+  border-radius:var(--radius);padding:24px;font-family:monospace;
+  position:relative;overflow:hidden;
+}
+.grid-demo::after{
+  content:'Preview';position:absolute;bottom:12px;right:12px;
+  font-size:.7rem;color:var(--text-light);font-family:'Lato',sans-serif;letter-spacing:.06em;
+}
+.grid-row{display:flex;gap:0;margin-bottom:2px}
+.grid-cell{
+  width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+  font-size:1rem;font-weight:700;color:var(--text-dark);
+  border:1px solid rgba(90,138,60,.1);
+}
+.grid-cell.hi{background:rgba(200,230,176,.6);color:var(--green-deep)}
+.word-list-demo{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.word-chip{
+  background:var(--white);border:1px solid rgba(90,138,60,.25);
+  color:var(--green-deep);font-size:.75rem;font-weight:700;
+  padding:4px 12px;border-radius:50px;letter-spacing:.03em;
+}
+.preview-copy h3{
+  font-family:'Playfair Display',serif;font-size:1.5rem;
+  color:var(--green-deep);margin-bottom:16px;
+}
+.preview-copy p{font-size:.9rem;color:var(--text-mid);line-height:1.7;font-weight:300;margin-bottom:14px}
+.preview-copy ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.preview-copy li{
+  font-size:.875rem;color:var(--text-mid);
+  display:flex;align-items:flex-start;gap:10px;
+}
+.preview-copy li::before{content:'✦';color:var(--gold);flex-shrink:0;margin-top:1px}
+
+/* ── Pricing ───────────────────────────────────────────────── */
+.pricing-section{
+  background:var(--green-deep);color:var(--cream);text-align:center;
+}
+.pricing-section .section-label{color:var(--gold);opacity:.8}
+.pricing-section h2{color:var(--cream)}
+.pricing-section .section-sub{color:rgba(255,248,238,.7);margin:0 auto}
+.pricing-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:28px;
+  max-width:700px;margin:48px auto 0;
+}
+.price-card{
+  background:rgba(255,255,255,.08);border:1px solid rgba(212,168,83,.3);
+  border-radius:var(--radius);padding:36px 28px;text-align:center;
+  transition:transform .2s;
+}
+.price-card:hover{transform:translateY(-4px)}
+.price-card.featured{
+  background:rgba(255,255,255,.14);border-color:var(--gold);
+  position:relative;
+}
+.price-card.featured::before{
+  content:'Most Popular';position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:var(--green-deep);
+  font-size:.7rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 16px;border-radius:50px;white-space:nowrap;
+}
+.price-type{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,248,238,.6);margin-bottom:8px}
+.price-amount{font-family:'Playfair Display',serif;font-size:3rem;color:var(--gold);line-height:1}
+.price-amount sup{font-size:1.2rem;vertical-align:super}
+.price-desc{font-size:.8rem;color:rgba(255,248,238,.55);margin:6px 0 20px}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:28px;text-align:left}
+.price-features li{font-size:.8rem;color:rgba(255,248,238,.8);display:flex;align-items:center;gap:8px}
+.price-features li::before{content:'✓';color:var(--gold);font-weight:900;flex-shrink:0}
+.btn-buy{
+  display:block;width:100%;padding:14px;border-radius:50px;
+  font-size:.9rem;font-weight:700;letter-spacing:.04em;
+  text-decoration:none;transition:all .2s;
+}
+.btn-buy-pdf{background:var(--gold);color:var(--green-deep)}
+.btn-buy-pdf:hover{background:#e8bc6a;transform:translateY(-1px)}
+.btn-buy-print{
+  background:transparent;color:var(--cream);
+  border:1.5px solid rgba(255,248,238,.4);
+}
+.btn-buy-print:hover{background:rgba(255,255,255,.1)}
+
+/* ── FAQ ───────────────────────────────────────────────────── */
+.faq-section{background:var(--white)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.faq-card{
+  border:1px solid rgba(90,138,60,.15);border-radius:var(--radius);
+  padding:24px 22px;
+}
+.faq-card h4{font-size:.95rem;font-weight:700;color:var(--green-deep);margin-bottom:8px}
+.faq-card p{font-size:.875rem;color:var(--text-mid);line-height:1.6;font-weight:300}
+
+/* ── Footer ────────────────────────────────────────────────── */
+footer{
+  background:var(--text-dark);color:rgba(255,255,255,.6);
+  text-align:center;padding:40px 5%;
+}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--white);margin-bottom:8px}
+.footer-logo span{color:var(--gold)}
+footer p{font-size:.8rem;line-height:1.7}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{text-decoration:underline}
+.footer-links{display:flex;justify-content:center;gap:24px;margin:14px 0;flex-wrap:wrap}
+.footer-links a{font-size:.8rem;color:rgba(255,255,255,.5);text-decoration:none}
+.footer-links a:hover{color:var(--gold)}
+
+/* ── Animations ────────────────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;padding-top:88px;gap:40px}
+  .hero-visual{order:-1}
+  .book-mockup{width:200px;height:270px}
+  .pricing-grid,.preview-inner,.faq-grid{grid-template-columns:1fr}
+  .trust-item{border-right:none;border-bottom:1px solid rgba(255,248,238,.1)}
+  nav .nav-cta{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Trace<span>Flow</span></a>
+  <a href="#pricing" class="nav-cta">Get the Book ↓</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">New Release · Garden & Nature Edition</div>
+    <h1>Large Print<br><em>Word Search</em><br>for Seniors</h1>
+    <p class="hero-sub">10 relaxing puzzles with extra-large letters, beautiful nature themes, and a complete answer key — designed for daily calm and mental sharpness.</p>
+    <div class="hero-badges">
+      <span class="badge">Large Print</span>
+      <span class="badge">10 Puzzles</span>
+      <span class="badge">Answer Key</span>
+      <span class="badge">PDF + Print</span>
+    </div>
+    <div class="hero-buttons">
+      <a href="#pricing" class="btn-primary">⬇ Download PDF — ₹199</a>
+      <a href="#pricing" class="btn-secondary">📦 Order Paperback</a>
+    </div>
+    <p class="price-note">PDF instant download · Paperback ships via <strong>Amazon KDP</strong></p>
+  </div>
+
+  <div class="hero-visual">
+    <div style="position:relative">
+      <div class="book-mockup">
+        <div class="book-border"></div>
+        <div class="book-tag">✦ Large Print ✦</div>
+        <div class="book-title-block">
+          <h2>Word Search<br>for Seniors</h2>
+          <p>Garden &amp; Nature Edition</p>
+        </div>
+        <div class="book-divider"></div>
+        <div class="book-circle">
+          <span class="num">10</span>
+          <span class="lbl">Puzzles</span>
+        </div>
+        <div class="book-features">
+          <span class="book-feat">✦ Extra-Large Letters</span>
+          <span class="book-feat">✦ Full Answer Key</span>
+          <span class="book-feat">✦ Nature Themes</span>
+        </div>
+        <div class="book-url">www.traceflow.in</div>
+      </div>
+      <div class="floating-badge">
+        <span>Best<br>Seller</span>
+        <span>Niche</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-icon">📖</span>10 unique puzzles</div>
+  <div class="trust-item"><span class="trust-icon">🔡</span>Extra-large print</div>
+  <div class="trust-item"><span class="trust-icon">🌿</span>Garden & nature themes</div>
+  <div class="trust-item"><span class="trust-icon">✅</span>Complete answer key</div>
+  <div class="trust-item"><span class="trust-icon">⚡</span>Instant PDF download</div>
+</div>
+
+<!-- WHAT'S INSIDE -->
+<section class="inside-section">
+  <div class="section-label">Inside the book</div>
+  <h2 class="section-title">10 peaceful puzzles<br>to enjoy any time</h2>
+  <p class="section-sub">Each puzzle has a unique nature theme with 10 hidden words. Work through them one a day, or enjoy them all at once.</p>
+  <div class="puzzles-grid">
+    <div class="puzzle-card"><div class="puzzle-num">01</div><h3>Beautiful Garden</h3><p>Flowers & blossoms to brighten your day</p></div>
+    <div class="puzzle-card"><div class="puzzle-num">02</div><h3>Birds & Butterflies</h3><p>Wonderful creatures of the sky</p></div>
+    <div class="puzzle-card"><div class="puzzle-num">03</div><h3>Kitchen Garden</h3><p>Fresh herbs and vegetables</p></div>
+    <div class="puzzle-card"><div class="puzzle-num">04</div><h3>Seasons & Weather</h3><p>The beauty of every season</p></div>
+    <div class="puzzle-card"><div class="puzzle-num">05</div><h3>Trees & Forests</h3><p>Majestic trees around the world</p></div>
+    <div class="puzzle-card"><div class="puzzle-num">06</div><h3>Ocean & Nature</h3><p>Treasures of the sea</p></div>
+    <div class="puzzle-card"><div class="puzzle-num">07</div><h3>Fruits & Berries</h3><p>Sweet gifts from nature</p></div>
+    <div class="puzzle-card"><div class="puzzle-num">08</div><h3>Peaceful Places</h3><p>Tranquil spots to dream about</p></div>
+    <div class="puzzle-card"><div class="puzzle-num">09</div><h3>Farm & Countryside</h3><p>Simple country life</p></div>
+    <div class="puzzle-card"><div class="puzzle-num">10</div><h3>Colours of Nature</h3><p>A rainbow painted by nature</p></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="section-label">Why this book</div>
+  <h2 class="section-title">Designed with seniors<br>in mind, from the start</h2>
+  <p class="section-sub">Every detail was chosen to make the experience comfortable, enjoyable, and genuinely relaxing.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🔡</div>
+      <h3>Extra-large letters</h3>
+      <p>Bold, clear grid letters sized for easy reading — no squinting, no strain, even in lower light.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌿</div>
+      <h3>Calming nature themes</h3>
+      <p>Every puzzle is themed around the natural world — gardens, birds, forests, the sea — topics that feel warm and familiar.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✅</div>
+      <h3>Full answer key included</h3>
+      <p>Stuck on a word? Every puzzle has a complete answer key at the back with exact row and column positions.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧠</div>
+      <h3>Daily brain workout</h3>
+      <p>One puzzle a day keeps the mind sharp, focused, and engaged — a gentle habit with lasting benefits.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎁</div>
+      <h3>Perfect gift</h3>
+      <p>A thoughtful, affordable gift for a parent, grandparent, or friend who enjoys quiet, satisfying activities.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📄</div>
+      <h3>PDF + paperback</h3>
+      <p>Download and print at home instantly, or order a beautiful paperback delivered to your door via Amazon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE PREVIEW -->
+<section class="preview-section">
+  <div class="section-label">Sample puzzle</div>
+  <h2 class="section-title">See what's inside</h2>
+  <p class="section-sub">Here's a peek at the grid style and word list format used throughout the book.</p>
+  <div class="preview-inner">
+    <div class="grid-demo">
+      <div style="font-size:.75rem;font-weight:700;color:var(--green-mid);margin-bottom:12px;letter-spacing:.05em">PUZZLE 1 · BEAUTIFUL GARDEN</div>
+      <div class="grid-row"><div class="grid-cell hi">R</div><div class="grid-cell">A</div><div class="grid-cell">M</div><div class="grid-cell hi">O</div><div class="grid-cell hi">S</div><div class="grid-cell hi">E</div><div class="grid-cell">K</div><div class="grid-cell">P</div></div>
+      <div class="grid-row"><div class="grid-cell">T</div><div class="grid-cell hi">L</div><div class="grid-cell">N</div><div class="grid-cell">B</div><div class="grid-cell">Q</div><div class="grid-cell">V</div><div class="grid-cell">W</div><div class="grid-cell">J</div></div>
+      <div class="grid-row"><div class="grid-cell">U</div><div class="grid-cell hi">I</div><div class="grid-cell">C</div><div class="grid-cell">F</div><div class="grid-cell">G</div><div class="grid-cell hi">D</div><div class="grid-cell hi">A</div><div class="grid-cell hi">I</div></div>
+      <div class="grid-row"><div class="grid-cell">L</div><div class="grid-cell hi">L</div><div class="grid-cell">H</div><div class="grid-cell">E</div><div class="grid-cell">Z</div><div class="grid-cell">Y</div><div class="grid-cell">X</div><div class="grid-cell hi">S</div></div>
+      <div class="grid-row"><div class="grid-cell">I</div><div class="grid-cell hi">P</div><div class="grid-cell">S</div><div class="grid-cell">Q</div><div class="grid-cell">R</div><div class="grid-cell">N</div><div class="grid-cell">M</div><div class="grid-cell hi">Y</div></div>
+      <div class="grid-row"><div class="grid-cell">P</div><div class="grid-cell">N</div><div class="grid-cell">W</div><div class="grid-cell">K</div><div class="grid-cell">V</div><div class="grid-cell">B</div><div class="grid-cell">C</div><div class="grid-cell">F</div></div>
+      <div style="font-size:.65rem;color:var(--text-light);margin-top:8px;font-style:italic">← Partial preview · Full 15×15 grid in the book</div>
+      <div class="word-list-demo">
+        <span class="word-chip">ROSE</span><span class="word-chip">LILY</span><span class="word-chip">TULIP</span>
+        <span class="word-chip">DAISY</span><span class="word-chip">ORCHID</span><span class="word-chip">VIOLET</span>
+        <span class="word-chip">JASMINE</span><span class="word-chip">SUNFLOWER</span><span class="word-chip">MARIGOLD</span>
+        <span class="word-chip">LAVENDER</span>
+      </div>
+    </div>
+    <div class="preview-copy">
+      <h3>Easy to use, satisfying to complete</h3>
+      <p>Each puzzle page gives you the full 15×15 letter grid, a clear word list with checkboxes, and a themed title so you always know what you're searching for.</p>
+      <p>The answer key at the back tells you the exact row and column for every word — no frustration, just enjoyment.</p>
+      <ul>
+        <li>15×15 grid — the perfect size for seniors</li>
+        <li>10 words per puzzle, all nature-themed</li>
+        <li>Words hidden in all 8 directions</li>
+        <li>Checkbox list to track your progress</li>
+        <li>Row + column answer key for every puzzle</li>
+        <li>Printed in large, bold, easy-to-read type</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="section-label">Get your copy</div>
+  <h2 class="section-title">Choose your format</h2>
+  <p class="section-sub">Download instantly or order a beautiful printed paperback — both options include all 10 puzzles and the complete answer key.</p>
+  <div class="pricing-grid">
+    <div class="price-card featured">
+      <div class="price-type">Digital PDF</div>
+      <div class="price-amount"><sup>₹</sup>199</div>
+      <div class="price-desc">Download instantly · Print at home</div>
+      <ul class="price-features">
+        <li>Instant download after payment</li>
+        <li>Print as many copies as you like</li>
+        <li>All 10 puzzles + answer key</li>
+        <li>KDP-quality formatting</li>
+        <li>Works on phone, tablet, computer</li>
+      </ul>
+      <a href="#" class="btn-buy btn-buy-pdf">Download Now — ₹199</a>
+    </div>
+    <div class="price-card">
+      <div class="price-type">Printed Paperback</div>
+      <div class="price-amount"><sup>$</sup>8<span style="font-size:1.4rem">.99</span></div>
+      <div class="price-desc">Ships via Amazon · Delivered to door</div>
+      <ul class="price-features">
+        <li>Professional print quality</li>
+        <li>Perfect for gifting</li>
+        <li>All 10 puzzles + answer key</li>
+        <li>8.5" × 11" large format</li>
+        <li>Ships worldwide via Amazon KDP</li>
+      </ul>
+      <a href="#" class="btn-buy btn-buy-print">Order on Amazon →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-label">Questions</div>
+  <h2 class="section-title">Good to know</h2>
+  <div class="faq-grid">
+    <div class="faq-card">
+      <h4>How do I get the PDF after buying?</h4>
+      <p>You will receive a download link immediately after payment. You can print it at home on any standard printer, or read it on your phone or tablet.</p>
+    </div>
+    <div class="faq-card">
+      <h4>Can I gift this book to someone?</h4>
+      <p>Absolutely. The PDF can be forwarded to anyone as a gift. For the paperback, simply ship it directly to the recipient's address through Amazon.</p>
+    </div>
+    <div class="faq-card">
+      <h4>Is this suitable for people with low vision?</h4>
+      <p>Yes — the grid letters are printed in bold, large type specifically designed for easy reading. The answer key also uses clear, readable formatting.</p>
+    </div>
+    <div class="faq-card">
+      <h4>Will there be more volumes?</h4>
+      <p>Yes! More themed editions are in progress — including a Festivals & Celebrations edition and a Travel & Places edition. Subscribe below to hear first.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Trace<span>Flow</span></div>
+  <div class="footer-links">
+    <a href="#">Home</a>
+    <a href="#pricing">Buy</a>
+    <a href="mailto:admin@traceflow.in">Contact</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Refund Policy</a>
+  </div>
+  <p>© 2025 TraceFlow · <a href="https://www.traceflow.in">www.traceflow.in</a></p>
+  <p style="margin-top:8px;font-size:.72rem;opacity:.5">Quiet Mind Word Search — Garden & Nature Edition · Volume 1</p>
+</footer>
+
+</body>
+</html>
